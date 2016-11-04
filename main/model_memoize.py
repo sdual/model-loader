@@ -3,6 +3,8 @@ import pickle
 import pandas as pd
 import functools
 from memoize import Memoizer
+from keras.models import model_from_json
+
 
 store = {}
 memo = Memoizer(store)
@@ -22,6 +24,16 @@ def memoize_xgb_model():
     model_binary = result.fetchone()
     xgb = pickle.loads(model_binary['model'])
     return xgb
+
+def memoize_nn_model():
+    weight = engine.execute("SELECT `model` FROM `model_table` WHERE `model_name` = 'neural_net'")
+    model = engine.execute("SELECT `model` FROM `nn_model` WHERE `model_name` = 'neural_net'")
+    print('------------------------model is loaded---------------------------')
+    weight_binary = weight.fetchone()
+    model_json = model.fetchone()
+
+    model = model_from_json(model_json)
+    model.load_weights(weight_binary)
 
 
 if __name__ == '__main__':

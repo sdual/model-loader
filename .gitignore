@@ -3,4 +3,5 @@
 .python-version
 
 # data
+data/
 *.csv
