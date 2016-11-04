@@ -1,0 +1,6 @@
+# python
+*.pyc
+.python-version
+
+# data
+*.csv
