@@ -32,6 +32,8 @@ if __name__ == '__main__':
 
     nn_model.set_weights(weights)
 
+    print(weights)
+
     nn_model.compile(loss='binary_crossentropy', optimizer='rmsprop', metrics=['accuracy'])
 
     test_data = load_test_data()
