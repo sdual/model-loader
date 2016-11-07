@@ -12,7 +12,7 @@ def load_binary_file():
 
 def insert_binary_model(binary):
     ins = "INSERT INTO `model_table` VALUES ('neural_net', load_file(%s))"
-    engine.execute(ins, '../data/nn_sample_weight')
+    engine.execute(ins, '/Users/a13659/ca-reward/nn_model/nn-weights-20161104.pickle')
 
 if __name__ == '__main__':
     binary_data = load_binary_file()
